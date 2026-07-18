@@ -7,6 +7,45 @@ search:
   formats:
     - html
     - json
+  safe_search: 0
+  default_lang: "en"
 
 server:
   secret_key: "${SEARXNG_SECRET}"
+  limiter: false
+  image_proxy: false
+
+engines:
+  - name: duckduckgo
+    disabled: true
+  - name: startpage
+    disabled: true
+  - name: google
+    disabled: true
+
+  - name: bing
+    engine: bing
+    shortcut: b
+    disabled: false
+
+  - name: brave
+    engine: brave
+    shortcut: brave
+    disabled: false
+
+  - name: yahoo
+    engine: yahoo
+    shortcut: yh
+    disabled: false
+
+  - name: mojeek
+    engine: mojeek
+    shortcut: mjk
+    disabled: false
+
+  - name: google (via Programmable Search)
+    engine: google_custom_search
+    shortcut: gcs
+    disabled: true   # enable if you add GOOGLE_API_KEY + GOOGLE_CX to Render env vars
+    api_key: "${GOOGLE_API_KEY}"
+    cx: "${GOOGLE_CX}"
